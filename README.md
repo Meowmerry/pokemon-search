@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokémon Search App
 
-## Getting Started
+A modern web application built with Next.js that allows users to search and explore Pokémon information using the PokéAPI. Users can view detailed information about each Pokémon, including their physical characteristics, versions, and manage their favorite Pokémon list.
 
-First, run the development server:
+![Pokemon App Screenshot](../pokemon-search/public/images/page.png)
 
+## Features
+
+- 🔍 Real-time Pokémon search functionality
+- 📱 Responsive design that works on desktop and mobile devices
+- ⭐ Favorite Pokémon management system
+- 📊 Detailed Pokémon information display including:
+  - Weight and height statistics
+  - Game versions appearance
+  - Official artwork
+- 🎨 Modern UI with Tailwind CSS styling
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [PokéAPI](https://pokeapi.co/) - RESTful Pokémon API
+- [TypeScript](https://www.typescriptlang.org/) - Static typing for JavaScript
+
+## Prerequisites
+
+Before you begin, ensure you have installed:
+- Node.js (v14.0.0 or later)
+- npm or yarn package manager
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/pokemon-search.git
+cd pokemon-search
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+pokemon-search/
+├── components/
+│   └── Fovorite.tsx
+│   └── LoadingComponent.tsx
+│   └── PokemonComponent.tsx
+│   ├── SearchPokemon.tsx
+├── pages/
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── api/
+│   └── index.tsx
+├── public/
+├── styles/
+│   └── globals.css
+├── types/
+│   └── pokemon.ts
+├── utils/
+│   └── api.ts
+└── README.md
+```
 
-## Learn More
+## API Integration
 
-To learn more about Next.js, take a look at the following resources:
+This project uses the PokéAPI to fetch Pokémon data. Example API call:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+const fetchPokemonData = async (name: string) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching Pokemon data:', error);
+    return null;
+  }
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Type Definitions
 
-## Deploy on Vercel
+```typescript
+interface Pokemon {
+  name: string;
+  height: number;
+  weight: number;
+  sprites: {
+    front_default: string;
+    // other sprite properties...
+  };
+  game_indices: {
+    version: {
+      name: string;
+    };
+  }[];
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [PokéAPI](https://pokeapi.co/) for providing the Pokémon data
+- [Tailwind CSS](https://tailwindcss.com/) for the styling utilities
+- The Pokémon Company for the original content
+
+## Contact
+
+Your Name - [@yourusername](https://twitter.com/yourusername)
+
+Project Link: [https://github.com/yourusername/pokemon-search](https://github.com/yourusername/pokemon-search)
