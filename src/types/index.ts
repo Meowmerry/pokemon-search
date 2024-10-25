@@ -269,7 +269,7 @@ export interface GenerationVii {
 
 export interface Icons {
     front_default: string;
-    front_female: any;
+    front_female: null;
 }
 
 export interface UltraSunUltraMoon {
