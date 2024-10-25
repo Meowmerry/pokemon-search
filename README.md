@@ -2,7 +2,8 @@
 
 A modern web application built with Next.js that allows users to search and explore Pokémon information using the PokéAPI. Users can view detailed information about each Pokémon, including their physical characteristics, versions, and manage their favorite Pokémon list.
 
-![Pokemon App Screenshot](../pokemon-search/public/images/page.png)
+![Pokemon App Screenshot](https://github.com/user-attachments/assets/d3aee08d-1cfc-42a1-b670-083b6ea21fc5)
+
 
 ## Features
 
