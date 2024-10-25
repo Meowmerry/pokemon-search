@@ -44,11 +44,8 @@ const SearchPokemon = () => {
     };
 
     const handleSearch = async (term: string) => {
-
         setLoading(true);
-
         await new Promise((resolve) => setTimeout(resolve, 500)); // 500ms delay
-
         try {
             setError(null);
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${term.toLowerCase()}`);
